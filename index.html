@@ -7,222 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="/style-agents.css" /> -->
     <link rel="icon" type="image/png" sizes="192x192" href="https://studio.d-id.com/favicon/favicon-192x192.png" />
-    <style>
-      #startRecording,
-      #stopRecording {
-        padding: 10px 20px;
-        margin: 0 10px;
-        background-color: #8b5cf6;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s ease;
-      }
-
-      #startRecording:disabled,
-      #stopRecording:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
-
-      #loading {
-        font-size: 16px;
-        color: #7c3aed;
-        font-style: italic;
-      }
-      .peerConnectionState-new {
-        color: cornflowerblue;
-      }
-      .peerConnectionState-connecting {
-        color: orange;
-      }
-      .peerConnectionState-connected {
-        color: green;
-      }
-      .peerConnectionState-disconnected,
-      .peerConnectionState-closed,
-      .peerConnectionState-failed {
-        color: red;
-      }
-
-      .iceConnectionState-new {
-        color: cornflowerblue;
-      }
-      .iceConnectionState-checking {
-        color: orange;
-      }
-      .iceConnectionState-connected,
-      .iceConnectionState-completed {
-        color: green;
-      }
-      .peerConnectionState-disconnected,
-      .peerConnectionState-closed,
-      .peerConnectionState-failed {
-        color: red;
-      }
-
-      .iceGatheringState-new {
-        color: cornflowerblue;
-      }
-      .iceGatheringState-gathering {
-        color: orange;
-      }
-      .iceGatheringState-complete {
-        color: black;
-      }
-
-      .signalingState-stable {
-        color: green;
-      }
-      .signalingState-have-local-offer,
-      .signalingState-have-remote-offer,
-      .signalingState-have-local-pranswer,
-      .signalingState-have-remote-pranswer {
-        color: cornflowerblue;
-      }
-      .signalingState-closed {
-        color: red;
-      }
-
-      .streamingState-streaming {
-        color: green;
-      }
-
-      .streamingState-empty {
-        color: grey;
-      }
-
-      #agentId-label,
-      #chatId-label {
-        color: green;
-      }
-
-      /* added css from here */
-
-      body * {
-        font-family: 'Mulish', sans-serif;
-        text-align: center;
-      }
-
-      #content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin-top: 50px;
-      }
-      @media (max-width:786px) {
-        #content{
-          display: flex;
-          flex-direction: column;
-        }
-      }
-
-      #buttons {
-        clear: both;
-        padding: 0 0 0 0;
-        text-align: center;
-      }
-
-      button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        font-size: 16px;
-        margin: 0 5px;
-        background-color: #7459fe;
-        color: #fff;
-      }
-
-      button#connect-button {
-        background-color: green;
-      }
-      button#destroy-button {
-        background-color: red;
-      }
-
-      button#start-button {
-        margin: 1em;
-      }
-
-      button:hover,
-      #destroy-button:hover,
-      #connect-button:hover {
-        filter: brightness(85%);
-        cursor: pointer;
-        transition: all 0.2s ease-out;
-      }
-
-      h4 {
-        margin: 0;
-        margin-bottom: 10px;
-      }
-
-      textarea {
-        font-size: 16px;
-        text-align: center;
-        width: 500px;
-        border-radius: 5px;
-        padding: 10px 20px;
-        border: 2px solid #7459fe;
-        font-size: 16px;
-        margin: 0 5px;
-      }
-
-      #msgHistory {
-        overflow-y: auto;
-        line-break: loose;
-      }
-
-      #status {
-        display: inline-block;
-        zoom: 1;
-        line-height: 140%;
-        font-size: 15px;
-        width: 400px;
-      }
-
-      #status div {
-        padding-bottom: 10px;
-      }
-
-      #video-wrapper {
-        /* height: 500px; */
-        width: 400px;
-        height: 400px;
-        background-position: top;
-      }
-
-      .chat {
-        width: 400px;
-      }
-
-      video {
-        /* display: block; */
-        border-radius: 50%;
-        background-position: top;
-        /* position: absolute; */
-        background-size: contain;
-      }
-
-      .animated {
-        animation: opacityAnimation 0.2s ease-in-out;
-      }
-
-      @keyframes opacityAnimation {
-        from {
-          opacity: 0.8;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-    </style>
+ <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div id="content">
+    <div id="content" class="content">
       <div id="status">
         <h4>Agent Status</h4>
         Agent ID: <label id="agentId-label"></label><br />
@@ -244,17 +33,15 @@
       </div>
 
       <div id="video-wrapper">
-        <div>
+        <div class="video-pre-wrapper">
           <video
             id="video-element"
-            width="400"
-            height="400"
             src=""
             autoplay
             loop
             muted
             class="animated"
-            style="object-fit: cover"
+            style="object-fit: cover;"
           ></video>
         </div>
       </div>
@@ -263,21 +50,23 @@
         <h4>Chat History</h4>
         <div id="msgHistory"></div>
       </div>
-    </div>
 
-    <div>
-      <!-- Buttons and loader -->
-      <div style="text-align: center; margin-top: 20px">
-        <button id="startRecording">🎤 Start Recording</button>
-        <button id="stopRecording" disabled>⏹️ Stop Recording</button>
-        <div id="loading" style="display: none; margin-top: 10px">⏳ Transcribing your voice...</div>
+      <div class="inputDiv">
+        <!-- Buttons and loader -->
+        <div style="text-align: center; margin-top: 20px">
+          <button id="startRecording">🎤 Start Recording</button>
+          <button id="stopRecording" disabled>⏹️ Stop Recording</button>
+          <div id="loading" style="display: none; margin-top: 10px">⏳ Transcribing your voice...</div>
+        </div>
+  
+        <h3>Type your message here:</h3>
+        <textarea id="textArea" cols="50" rows="5" maxlength="280"></textarea>
+        <br />
+        <button id="start-button" type="button">Send</button>
       </div>
-
-      <h3>Type your message here:</h3>
-      <textarea id="textArea" cols="50" rows="5" maxlength="280"></textarea>
-      <br />
-      <button id="start-button" type="button">Send</button>
     </div>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="agents-client-api.js"></script>
   </body>
