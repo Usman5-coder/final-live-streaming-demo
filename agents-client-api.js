@@ -413,43 +413,39 @@ startBtn.addEventListener("click", async () => {
       //   body: formData
       // });
       // async function sendAudioToWebhook(audioBlob) {
-        const webhookUrl = 'https://osmanking.app.n8n.cloud/webhook/fe2c32c5-0bdb-4078-8760-f1f7b27838e2';
-        
-        try {
-          // Send the POST request
-          const response = await fetch(webhookUrl, {
-            method: 'POST',
-            body: formData
-            
-          });
-          
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          
-          const responseData = await response.json();
-          console.log('Success:', responseData);
-          sendMessage(responseData['text']);
-        } catch (error) {
-          console.error('Error sending audio:', error);
-          throw error;
+      const webhookUrl =
+        "https://osmanking.app.n8n.cloud/webhook/fe2c32c5-0bdb-4078-8760-f1f7b27838e2";
+
+      try {
+        // Send the POST request
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      
-      
+
+        const responseData = await response.json();
+        console.log("Success:", responseData);
+        sendMessage(responseData["text"]);
+      } catch (error) {
+        console.error("Error sending audio:", error);
+        throw error;
+      }
+
       // Example usage:
       // Assuming you have an audio blob from somewhere (like a recorder)
       // sendAudioToWebhook(audioBlob);
-
-
-
 
       // const data = await response.json();
       // userinput = data.text;
       // console.log("Transcribed Text:", userinput);
       // sendMessage(userinput);
-    // } catch (error) {
-    //   console.error("Transcription Error:", error);
-    //   alert("Failed to transcribe. Try again.");
+      // } catch (error) {
+      //   console.error("Transcription Error:", error);
+      //   alert("Failed to transcribe. Try again.");
     } finally {
       loadingDiv.style.display = "none";
       startBtn.disabled = false;
@@ -570,7 +566,7 @@ startButton.onclick = async () => {
     }
   }
 };
-
+startButton.click()
 const destroyButton = document.getElementById("destroy-button");
 destroyButton.onclick = async () => {
   await fetch(`${DID_API.url}/${DID_API.service}/streams/${streamId}`, {
@@ -728,6 +724,7 @@ agentsButton.onclick = async () => {
     console.log(agentsIds);
     agentId = agentsIds.agentId;
     chatId = agentsIds.chatId;
+    connectButton.click()
     return;
   } catch (err) {
     agentIdLabel.innerHTML = `<span style='color:red'>Failed</span>`;
@@ -735,9 +732,10 @@ agentsButton.onclick = async () => {
     throw new Error(err);
   }
 };
+agentsButton.click()
 
 // Paste Your Created Agent and Chat IDs Here:
-// agentId = "agt__vaeBfE5";
-// chatId = "cht_rJnfAZQGC_GKh_n1gerA3";
-agentId= "";
-chatId=""
+// agentId = "";
+// chatId = "";
+agentId = "agt__vaeBfE5";
+chatId = "cht_rJnfAZQGC_GKh_n1gerA3";
