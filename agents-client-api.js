@@ -566,7 +566,7 @@ startButton.onclick = async () => {
     }
   }
 };
-startButton.click()
+startButton.click();
 const destroyButton = document.getElementById("destroy-button");
 destroyButton.onclick = async () => {
   await fetch(`${DID_API.url}/${DID_API.service}/streams/${streamId}`, {
@@ -724,7 +724,7 @@ agentsButton.onclick = async () => {
     console.log(agentsIds);
     agentId = agentsIds.agentId;
     chatId = agentsIds.chatId;
-    connectButton.click()
+    connectButton.click();
     return;
   } catch (err) {
     agentIdLabel.innerHTML = `<span style='color:red'>Failed</span>`;
@@ -732,7 +732,7 @@ agentsButton.onclick = async () => {
     throw new Error(err);
   }
 };
-agentsButton.click()
+agentsButton.click();
 
 // Paste Your Created Agent and Chat IDs Here:
 // agentId = "";

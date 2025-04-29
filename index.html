@@ -4,10 +4,18 @@
     <title>D-ID Agents API Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="stylesheet" href="/style-agents.css" /> -->
-    <link rel="icon" type="image/png" sizes="192x192" href="https://studio.d-id.com/favicon/favicon-192x192.png" />
- <link rel="stylesheet" href="style.css">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="https://studio.d-id.com/favicon/favicon-192x192.png"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
@@ -18,22 +26,32 @@
         Chat ID: <label id="chatId-label"></label><br />
         <br />
         <h4>WebRTC Connection Status</h4>
-        ICE gathering status: <label id="ice-gathering-status-label"></label><br />
+        ICE gathering status: <label id="ice-gathering-status-label"></label
+        ><br />
         ICE status: <label id="ice-status-label"></label><br />
         Peer connection status: <label id="peer-status-label"></label><br />
         Signaling status: <label id="signaling-status-label"></label><br />
         Streaming status: <label id="streaming-status-label"></label><br />
         <br />
         <div id="buttons">
-          <button id="agents-button" type="button" style="display: none;">Create new Agent with Knowledge</button>
+          <button id="agents-button" type="button" style="display: none">
+            Create new Agent with Knowledge
+          </button>
           <br /><br />
-          <button id="connect-button" type="button" style="display: none;">Connect</button>
-          <button id="destroy-button" type="button" style="display: none;">Destroy</button>
+          <button id="connect-button" type="button" style="display: none">
+            Connect
+          </button>
+          <button id="destroy-button" type="button" style="display: none">
+            Destroy
+          </button>
         </div>
       </div>
 
       <div id="video-wrapper">
-        <div class="video-pre-wrapper">
+        <div
+          class="video-pre-wrapper"
+          style="width: 100vw !important; height: 100vh !important"
+        >
           <video
             id="video-element"
             src=""
@@ -41,7 +59,11 @@
             loop
             muted
             class="animated"
-            style="object-fit: cover;"
+            style="
+              object-fit: cover;
+              width: 100vw !important;
+              height: 100vh !important;
+            "
           ></video>
         </div>
       </div>
@@ -50,23 +72,37 @@
         <h4>Chat History</h4>
         <div id="msgHistory"></div>
       </div>
-
-      <div class="inputDiv">
-        <!-- Buttons and loader -->
-        <div style="text-align: center; margin-top: 20px">
-          <button id="startRecording">🎤 Start Recording</button>
-          <button id="stopRecording" disabled>⏹️ Stop Recording</button>
-          <div id="loading" style="display: none; margin-top: 10px">⏳ Transcribing your voice...</div>
+      <!-- Buttons and loader -->
+      <div
+        style="
+          text-align: center;
+          position: absolute;
+          bottom: 30px;
+          width: 100vw;
+        "
+      >
+        <button id="startRecording">🎤 Start Recording</button>
+        <button id="stopRecording" disabled>⏹️ Stop Recording</button>
+        <div id="loading" style="display: none; margin-top: 10px">
+          ⏳ Transcribing your voice...
         </div>
-  
-        <h3>Type your message here:</h3>
-        <textarea id="textArea" cols="50" rows="5" maxlength="280"></textarea>
+      </div>
+      <div class="inputDiv" style="display: none">
+        <h3 style="display: none">Type your message here:</h3>
+        <textarea
+          id="textArea"
+          cols="50"
+          rows="5"
+          maxlength="280"
+          style="display: none"
+        ></textarea>
         <br />
-        <button id="start-button" type="button">Send</button>
+        <button id="start-button" type="button" style="display: none">
+          Send
+        </button>
       </div>
     </div>
 
-    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="agents-client-api.js"></script>
   </body>

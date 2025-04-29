@@ -1,12 +1,12 @@
 #startRecording,
 #stopRecording {
-  padding: 10px 20px;
+  padding: 20px 30px;
   margin: 0 10px;
   background-color: #8b5cf6;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 2rem;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -16,7 +16,11 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #loading {
   font-size: 16px;
   color: #7c3aed;
@@ -91,8 +95,8 @@
 
 /* added css from here */
 
-body * {
-  font-family: 'Mulish', sans-serif;
+body {
+  font-family: "Mulish", sans-serif;
   text-align: center;
   overflow-x: hidden !important;
 }
@@ -103,7 +107,6 @@ body * {
   justify-content: space-evenly;
   margin-top: 50px;
 }
-
 
 #buttons {
   clear: both;
@@ -175,7 +178,7 @@ textarea {
 
 /* #video-wrapper {
   /* height: 500px; */
-  /*width: 500px;
+/*width: 500px;
   height: 500px;
   background-position: top;
 } */
@@ -187,13 +190,11 @@ textarea {
 
 video {
   /* display: block; */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-position: top;
   background-size: contain;
-  aspect-ratio: 1;
-  width: 70vw;
-  
-  
+  /* aspect-ratio: 1; */
+  /* width: 70vw; */
 }
 
 .animated {
@@ -208,20 +209,16 @@ video {
     opacity: 1;
   }
 }
-.inputDiv{
-  margin-top: 50px;
-}
 
-.video-pre-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70vw;
-    aspect-ratio: 1;
-    margin: 50px auto 0 auto;
-
+.video-pre-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  /* aspect-ratio: 1; */
+  margin: 50px auto 0 auto;
 }
-@media (min-width:800px) {
+/* @media (min-width:800px) {
     .video-pre-wrapper{
         width: 50vw !important;
     }
@@ -229,4 +226,4 @@ video {
         width: 50vw !important;
         margin: 0 auto;
     }
-}
+} */
