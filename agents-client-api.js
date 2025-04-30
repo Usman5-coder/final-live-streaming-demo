@@ -92,6 +92,7 @@ async function createPeerConnection(offer, iceServers) {
   let dc = await peerConnection.createDataChannel("JanusDataChannel");
   dc.onopen = () => {
     console.log("datachannel open");
+    startBtn.classList.remove("invisible")
   };
 
   let decodedMsg;
@@ -452,11 +453,16 @@ startBtn.addEventListener("click", async () => {
       stopBtn.disabled = true;
     }
   };
-
+  function clickStopButton() {
+    stopBtn.click();
+  }
   mediaRecorder.start();
   console.log("Recording started...");
   startBtn.disabled = true;
   stopBtn.disabled = false;
+  setTimeout(() => {
+    clickStopButton();
+  }, 6000);
 });
 
 stopBtn.addEventListener("click", () => {
